@@ -5,42 +5,47 @@ public class LinkedList {
     Node head;
 
     // 01:	Slett et element først i listen.
-    public void deleteFirstElement(){
+    public Integer deleteFirstElement(){
+        Integer returnValue = null;
         if(this.head != null){
+            returnValue = this.head.data;
             this.head = this.head.next;
         }
+        return returnValue;
     }
 
     // 02:	Legg til et element i slutten av listen.
-    public void addLast(int input){
-
+    public Integer addLast(int input){
+        Integer returnValue = null;
         if(this.head != null){
             Node temp = this.head;
             while(temp.next != null){
                 temp = temp.next;
             }
             temp.next = new Node(input);
-            return;
+            returnValue = temp.next.data;
+            return returnValue;
         }
-
         this.head = new Node(input);
+        returnValue = this.head.data;
+        return returnValue;
     }
 
     // 03:	Slett et element i slutten av listen.
-    public void deleteLastElement(){
+    public Integer deleteLastElement(){
+        Integer returnValue = null;
         if(this.head != null && this.head.next != null){
             Node temp = this.head;
             while(temp.next.next != null){
                 temp = temp.next;
             }
+            returnValue = temp.next.data;
             temp.next = null;
-            return;
         } else if(this.head != null) {
+            returnValue = head.data;
             head = null;
-            return;
         }
-
-        System.out.println("Det finnes ingen elementer i listen å slette.");
+        return returnValue;
     }
 
     // 04:	Slett et element med oppgitt verdi fra listen. 
