@@ -1,4 +1,6 @@
-package src;
+package com.netcode;
+
+import java.awt.*;
 
 public class LinkedList {
     
@@ -49,73 +51,73 @@ public class LinkedList {
     }
 
     // 04:	Slett et element med oppgitt verdi fra listen. 
-    public void deleteElement(int input){
+    public Integer deleteElement(int input){
+        Integer returnValue = null;
         if(this.head != null){
             Node temp = this.head;
             if(temp.data == input){
+                returnValue = this.head.data;
                 this.head = temp.next;
+                return returnValue;
             } else {
                 while(temp.next != null){
                     if(temp.next.data == input){
+                        returnValue = temp.next.data;
                         temp.next = temp.next.next;
-                        System.out.println("Vi har slettet ett element med verdi: "+input);
-                        return;
+                        return returnValue;
                     }
                     temp = temp.next;
                 }
-                System.out.println("Fant ingen elementer med verdi: "+input);
             }
-            return;
+            return returnValue;
         }
-        System.out.println("Listen er tom. Det er ikke mulig å slette element: "+input);
+        return returnValue;
     }
 
     // 05:	Legg til et element etter et element med oppgitt verdi.
-    public void addAfterValue(int input, int after){
+    public Integer addAfterValue(int input, int after){
+        Integer returnValue = null;
         if(this.head != null){
             Node temp = this.head;
             while(temp != null){
                 if(temp.data == after){
+                    returnValue = temp.data;
                     Node holder = temp.next;
                     temp.next = new Node(input);
                     temp.next.next = holder;
-                    System.out.println("Vi har lagt til ett element med verdi: "+input+" etter verdi: "+after);
-                    return;
+                    return returnValue;
                 }
                 temp = temp.next;
             }
-            System.out.println("Fant ingen elementer med verdi: "+after);
-            return;
         }
-        System.out.println("Listen er tom. Det er ikke mulig å finne: "+after);
+        return returnValue;
     }
 
     // 06:	Legg til et element foran et element med oppgitt verdi.
-    public void addBeforeValue(int input, int before){
+    public Integer addBeforeValue(int input, int before){
+        Integer returnValue = null;
         if(this.head != null){
             Node temp = this.head;
             if(temp.data == before){
                 Node holder = temp;
+                returnValue = temp.data;
                 this.head = new Node(input);
                 this.head.next = holder;
-                System.out.println("Vi har lagt til ett element med verdi: "+input+" før verdi: "+before);
-
+                return returnValue;
             } else {
-                while(temp.next != null){
-                    if(temp.next.data == before){
+                while (temp.next != null) {
+                    if (temp.next.data == before) {
                         Node holder = temp.next;
+                        returnValue = temp.next.data;
                         temp.next = new Node(input);
                         temp.next.next = holder;
-                        System.out.println("Vi har lagt til ett element med verdi: "+input+" før verdi: "+before);
-                        return;
+                        return returnValue;
                     }
                     temp = temp.next;
                 }
-                System.out.println("Fant ingen elementer med verdi: "+before);
             }
-            return;
         }
-        System.out.println("Listen er tom. Det er ikke mulig å finne: "+before);
+        return returnValue;
     }
 
     // 07:	Skriv ut lengden på listen.
