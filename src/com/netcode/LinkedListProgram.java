@@ -88,14 +88,35 @@ class Program{
                     }
                     break;
                 case "7":
-
+                    returnValue = list.getLength();
+                    System.out.println("Lenden på listen er: "+returnValue);
+                    break;
+                case "8":
+                    System.out.println("Fyll inn verdien du ønsker å telle opp: ");
+                    value = Integer.parseInt(br.readLine());
+                    returnValue = list.printElementCount(value);
+                    if(returnValue != null){
+                        System.out.println("Det er "+returnValue+" av verdi "+value+" i listen.");
+                    } else {
+                        System.out.println("Det finnes ingen '"+value+"' i listen.");
+                    }
                     break;
                 case "9":
-                    System.out.println("Her er listen: ");
-                    this.list.printList();
+                    String returnString = list.getList();
+                    if(returnString != null){
+                        System.out.println("Her er listen: "+returnString);
+                    } else {
+                        System.out.println("Det finnes ingen elementer i listen");
+                    }
                     break;
-
-
+                case "10":
+                    returnValue = list.deleteList();
+                    if(returnValue != null){
+                        System.out.println("Det ble slettet "+returnValue+" elementer fra listen.");
+                    } else {
+                        System.out.println("Det var ingen elementer i listen");
+                    }
+                    break;
                 default:
                     break;
             }

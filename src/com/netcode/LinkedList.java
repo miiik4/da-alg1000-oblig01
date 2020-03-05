@@ -121,8 +121,8 @@ public class LinkedList {
     }
 
     // 07:	Skriv ut lengden på listen.
-    public void printLenght(String text){
-        int count = 0;
+    public Integer getLength(){
+        Integer count = 0;
         if(this.head != null){
             Node temp = this.head;
             while(temp != null){
@@ -130,12 +130,12 @@ public class LinkedList {
                 temp = temp.next;
             }
         }
-        System.out.println(text+count);
+        return count;
     }
 
     // 08:	Tell opp antall forekomster av element  med gitt verdi i lista, dette antallet skrives ut.
-    public void printElementCount(int input){
-        int count = 0;
+    public Integer printElementCount(int input){
+        Integer count = 0;
         if(this.head != null){
             Node temp = this.head;
             while(temp != null){
@@ -145,27 +145,31 @@ public class LinkedList {
                 temp = temp.next;
             }
         }
-        System.out.println("Antall elementer med verdi '"+input+"' er: "+count);
+        return count;
     }
 
     // 09:	Skriv ut hele listen.
-    public void printList(){
-
+    public String getList(){
+        String returnValue = "";
         if(this.head != null){
             Node temp = this.head;
             while(temp != null){
-                System.out.println(temp.data);
+                returnValue += temp.data;
+                if(temp.next != null){
+                    returnValue += ", ";
+                }
                 temp = temp.next;
             }
-            return;
+            return returnValue;
         }
-        System.out.println("Listen er tom..");
+        return null;
     }
 
     // 10:	Slett hele listen. Hvor mange elementer som ble slettet, skrives ut.
-    public void deleteList(){
-        printLenght("Antall slettede elementer var: ");
+    public Integer deleteList(){
+        Integer returnValue = getLength();
         this.head = null;
+        return returnValue;
     }
 
 }
